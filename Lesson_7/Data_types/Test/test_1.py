@@ -1,12 +1,12 @@
 from Lesson_7.Data_types.Pages.Mainpage import MainPage
 from Lesson_7.Data_types.Pages.Datafildes import DataFild
-
+from Lesson_7.conftest import chrome_browser
 
 def test_assertion(chrome_browser):
     main_page = MainPage(chrome_browser)
-    main_page.find_fields()
-    main_page.filling_in_the_fields()
-    main_page.click_submit_button()
+    main_page.find_fields()               # Находим поля для заполнения
+    main_page.filling_in_the_fields()      # Заполняем поля 
+    main_page.click_submit_button()       # Подтверждаем заполнение полей
 
     data_fild = DataFild(chrome_browser)
     data_fild.find_fields()
