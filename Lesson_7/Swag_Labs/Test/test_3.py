@@ -14,14 +14,7 @@ def test_shop(chrome_browser):
     container = ShopContainer(chrome_browser)
     container.checkout()
     container.info()
-   
+    container.price()
 
-def price(self):
-    return self.browser.find_element(By.CSS_SELECTOR, '[data-test="total-label"]').text
-    
-
-
-
-    #container.price()
-    #assert expected_total in container.price()   # Проверяем что итоговая сумма равна $58.29
-    #print(f"Итоговая сумма равна ${container.price()}")
+    assert expected_total in container.price()   # Проверяем что итоговая сумма равна $58.29
+    print(f"Итоговая сумма равна ${container.price()}")

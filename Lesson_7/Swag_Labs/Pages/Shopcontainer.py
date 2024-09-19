@@ -25,7 +25,4 @@ class ShopContainer:
     
     # Получаем итоговую сумму заказа и выводим ее в нужном формате
     def price(self):
-        WebDriverWait(self.browser, 10, 0.1).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".checkout"))).click()
-        total_price = self.browser.find_element(By.CSS_SELECTOR, "summary_total_label")
-        total = total_price.text.strip().replace("Total: $", "")
-        return total
+        return self.browser.find_element(By.CSS_SELECTOR, '[data-test="total-label"]').text
