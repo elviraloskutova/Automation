@@ -1,6 +1,6 @@
 import requests
 import json
-from Lesson_8.constants import X_client_URL
+from constants import X_client_URL
 
 path = '/employee/'
 
@@ -10,17 +10,15 @@ class Company:
         self.url = url
 
     # Создание клмпании
-    #def create(self, token: str, body: json):
-        #headers = {'x_client-token': token}
-        #response = requests.post(
-            #self.url + '/company', headers=headers, params=body)
-        #return response.json()
+    def create(self, token: str, body: json):
+        headers = {'x_client-token': token}
+        response = requests.post(self.url + '/company', headers=headers, params=body)
+        return response.json()
     
     # Последняя созданная активная компания
     def last_active_company_id(self):
         active_params = {'active': 'true'}
-        response = requests.get(
-            self.url + '/company', params=active_params)
+        response = requests.get(self.url + '/company', params=active_params)
         return response.json() [-1]['id']
     
 
@@ -31,15 +29,13 @@ class Employer:
     # Список сотрудников компании
     def get_list(self, company_id: int):
         company = {'company': company_id}
-        response = response.get(
-            self.url + '/employee', params=company)
+        response = requests.get(self.url + '/employee', params=company)
         return response.json()
     
     # Добавление сотрудника в компанию
     def add_new(self, token: str, body: json):
         headers = {'x-client-token': token}
-        response = requests.post(
-            self.url + '/employee', headers=headers, json=body)
+        response = requests.post(self.url + '/employee', headers=headers, json=body)
         return response.json()
     
 
